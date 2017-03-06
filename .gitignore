@@ -31,3 +31,6 @@ npm-debug.log
 
 # Code log to keep track of code
 project-log.md
+
+# Environment variables fie
+.env

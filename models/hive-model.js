@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
-const Inspection = require('./inspection.js');
+const Inspection = require('./inspection-model.js');
 
 
 const hiveSchema = new Schema({

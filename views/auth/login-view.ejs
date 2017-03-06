@@ -1,23 +1,25 @@
-<h2>Login</h2>
+<h1> Log In </h1>
 
+<% if (errorMessage.length > 0) { %>
+  <p class="error"> <%= errorMessage %> </p>
+<% } %>
 
-  <% if (typeof errorMessage !== "undefined") { %>
-    <div class="error-message"><%= errorMessage %></div>
-    <% } %>
-
-<form action="/login" method="POST" id="form">
-  <label for="username">Username</label>
-  <input type="text" name="username" placeholder="obiwan">
-
-  <label for="password">Password</label>
-  <input type="password" name="password" placeholder="thatsnomoon">
-
-
-  <button>Sign in</button>
-
-  <p class="account-message">
-    Don't have an account? <a href="/signup">Sign up</a>
-  </p>
+<form action="/login" method="POST">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="JonSnow">
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" placeholder="Your password">
+  </div>
+  <div>
+    <input type="submit" value="Log In">
+  </div>
 </form>
 
-<a href="/">Home</a>
+<%# Incorporate if time %>
+<%# <ul>
+  <li><a href="/auth/facebook"> Login With Facebook </a></li>
+  <li><a href="/auth/google">Login With Google</a></li>
+<ul>%>
