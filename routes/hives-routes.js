@@ -1,52 +1,120 @@
 const express = require('express');
-const ensure = require('connect-ensure-login');
-const multer = require('multer');
-const Hive = require('../models/hive-model');
 
-const hivesRoutes = express.Router();
-// const uploads = multer({ dest: '__dirname' + '/../public/uploads/' });
+const Hive = require('../models/hive-model.js');
 
-hivesRoutes.get('/hives/index', ensure.ensureLoggedIn(), (req, res, next) => {
-  Hive.find({owner: req.user._id}, (err, myHives) => {
-    if (err) { return next(err); }
+const router = express.Router();
 
-    res.render('hives/hive-index', { hives: myHives });
-  });
-});
 
-hivesRoutes.get('/hives/new', ensure.ensureLoggedIn(), (req, res, next) => {
-  res.render('hives/new-view.ejs', {
-    message: req.flash('success')
-  });
-});
-
-// router.post('/hives', ensureAuthenticated, (req, res, next) => {
-hivesRoutes.post('/hives',
-  ensure.ensureLoggedIn(),
-  // ('picture') refers to name="picture" in the form
-  // uploads.single('picture'),
-
-   (req, res, next) => {
-     const filename = req.file.filename;
-
-    const newHive = new Hive ({
-      name:  req.body.name,
-      desc:  req.body.comment,
-      // picture: `/uploads/${filename}`,
-      owner: req.user._id   // <-- we add the user ID
-    });
-
-  newHive.save ((err) => {
+router.get('/hives', (req, res, next) => {
+  Hive.find((err, hives) => {
     if (err) {
       next(err);
       return;
-    } else {
-      req.flash('success', 'Your hive has been created');
-      res.redirect('/hives/new');
     }
+
+      // display views/hives/index.ejs
+    res.render('hives/hive-index', {
+      hives: hives
+    });
+  });
+});
+
+router.get('/hives/new', (req, res, next) => {
+    // display views/hives/new.ejs
+  res.render(('hives/new-view'), {
+    errorMessage: ''
+  });
+});
+
+router.post('/hives', (req, res, next) => {
+  const hiveInfo = {
+    name: req.body.name,
+    price: req.body.dateCreated,
+    description: req.body.comment,
+    // imageUrl: req.body.imageUrl,
+  };
+
+  const theHive = new Hive(hiveInfo);
+
+  theHive.save((err) => {
+    if (err) {
+      res.render('hives/new', {
+        errorMessage: 'Oh no! Validation Failzsed!',
+        errors: theHive.errors
+      });
+      return;
+    }
+
+      // redirect to http://localhost:3000/hives
+      //                                  ---------
+      //                                       |
+      //              --------------------------
+      //              |
+    res.redirect('/hives');
+  });
+});
+
+// res.render('hives/show', {
+//   hive: hiveDoc
+// });
+
+router.get('/hives/:id/edit', (req, res, next) => {
+  const hiveId = req.params.id;
+
+  Hive.findById(hiveId, (err, hiveDoc) => {
+    if (err) { return next(err); }
+    res.render('hives/edit', {
+      hive: hiveDoc
+    });
   });
 });
 
 
+router.post('/hives/:id', (req, res, next) => {
+  const hiveId = req.params.id;
+  const hiveUpdates = {
+    name: req.body.name,
+    price: req.body.dateCreated,
+    description: req.body.comment,
+    // imageUrl: req.body.imageUrl,
+};
+  // db.hives.updateOne({ _id: hive }, { $set: hiveUpdates })
+  Hive.findByIdAndUpdate(hiveId, hiveUpdates, (err, hive) => {
+    if (err){
+      next(err);
+      return;
+    }
+      res.redirect('/hives');
+    });
+  });
 
-module.exports = hivesRoutes;
+  router.post('/hives/:id/delete', (req, res, next) => {
+    const hiveId = req.params.id;
+
+    console.log(hiveId);
+
+    // db.hives.deleteOne({_id: hiveId })
+    Hive.findByIdAndRemove(hiveId, (err, hive) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.redirect('/hives');
+    });
+  });
+
+router.get('/hives/:id', (req, res, next) => {
+  let hiveId = req.params.id;
+
+  Hive.findById(hiveId, (err, hiveDoc) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.render('hives/show', {
+      hive: hiveDoc
+    });
+  });
+});
+
+module.exports = router;
