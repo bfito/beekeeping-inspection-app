@@ -1,11 +1,10 @@
 const express = require('express');
 const ensure = require('connect-ensure-login');
 const multer = require('multer');
-
 const Hive = require('../models/hive-model');
 
 const hivesRoutes = express.Router();
-const uploads = multer({ dest: '__dirname' + '/../public/uploads/' });
+// const uploads = multer({ dest: '__dirname' + '/../public/uploads/' });
 
 hivesRoutes.get('/hives/index', ensure.ensureLoggedIn(), (req, res, next) => {
   Hive.find({owner: req.user._id}, (err, myHives) => {
@@ -16,7 +15,7 @@ hivesRoutes.get('/hives/index', ensure.ensureLoggedIn(), (req, res, next) => {
 });
 
 hivesRoutes.get('/hives/new', ensure.ensureLoggedIn(), (req, res, next) => {
-  res.render('hives/new.ejs', {
+  res.render('hives/new-view.ejs', {
     message: req.flash('success')
   });
 });
@@ -25,15 +24,15 @@ hivesRoutes.get('/hives/new', ensure.ensureLoggedIn(), (req, res, next) => {
 hivesRoutes.post('/hives',
   ensure.ensureLoggedIn(),
   // ('picture') refers to name="picture" in the form
-  uploads.single('picture'),
+  // uploads.single('picture'),
 
    (req, res, next) => {
      const filename = req.file.filename;
 
     const newHive = new Hive ({
       name:  req.body.name,
-      desc:  req.body.desc,
-      picture: `/uploads/${filename}`,
+      desc:  req.body.comment,
+      // picture: `/uploads/${filename}`,
       owner: req.user._id   // <-- we add the user ID
     });
 

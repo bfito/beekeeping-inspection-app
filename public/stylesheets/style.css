@@ -3,6 +3,17 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.success {
+  background-color: lightgreen;
+  color: white;
+}
+
+.error {
+  background-color: orangered;
+  color: white;
+  padding: 20px;
+}
+
 a {
   color: #00B7FF;
 }
