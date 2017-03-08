@@ -51,6 +51,63 @@ hivesRoutes.post('/hives',
     });
 });
 
+router.get('/hives/:id/edit', (req, res, next) => {
+  const hiveId = req.params.id;
+
+  Hive.findById(hiveId, (err, hiveDoc) => {
+    if (err) { return next(err); }
+    res.render('hives/edit-view', {
+      hive: hiveDoc
+    });
+  });
+});
+
+router.post('/hives/:id', (req, res, next) => {
+  const hiveId = req.params.id;
+  const hiveUpdates = {
+    name:  req.body.name,
+    dateCreated: req.body.dateCreated,
+    comment:  req.body.comment,
+    owner: req.user._id
+};
+  // db.hives.updateOne({ _id: hive }, { $set: hiveUpdates })
+  Hive.findByIdAndUpdate(hiveId, hiveUpdates, (err, hive) => {
+    if (err){
+      next(err);
+      return;
+    }
+      res.redirect('/hives');
+    });
+  });
+
+  router.post('/hives/:id/delete', (req, res, next) => {
+    const hiveId = req.params.id;
+
+    console.log(hiveId);
+
+    // db.hives.deleteOne({_id: hiveId })
+    Hive.findByIdAndRemove(hiveId, (err, hive) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      res.redirect('/hives');
+    });
+  });
+
+router.get('/hives/:id', (req, res, next) => {
+  let hiveId = req.params.id;
+
+  Hive.findById(hiveId, (err, hiveDoc) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    res.render('hives/show', {
+      hive: hiveDoc
+    });
+  });
+});
 
 
 

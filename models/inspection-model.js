@@ -4,7 +4,8 @@ const Schema   = mongoose.Schema;
 const inspectionSchema = new Schema({
 hive: { type: Schema.Types.ObjectId, ref: "Inspection" },
 dateCreated: Date,
-comment: String,
+notes: String,
+imageUrl: String
 });
 
 const Inspection = mongoose.model("Inspection", inspectionSchema);
