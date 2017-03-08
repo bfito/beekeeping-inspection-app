@@ -26,7 +26,7 @@
         offset: {
             top: 100
         }
-    })
+    });
 
     // Initialize and Configure Scroll Reveal Animation
     window.sr = ScrollReveal();
