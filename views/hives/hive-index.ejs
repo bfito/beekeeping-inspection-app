@@ -1,8 +1,12 @@
-<h1> Welcome to <%= title %> </h1>
+<h1> </h1>
+<p>Welcome to <%= title %></p>
 
+<%# Deleted succesMessage %>
 
 <% if (userInfo) { %>
+  // <p> Welcome, <%= userInfo.firstName %>. </p>
   <p> Welcome, <%= userInfo.firstName %>. </p>
+
 <% } %>
 
 <h1> Your Hives </h1>
@@ -11,9 +15,27 @@
   <% hives.forEach((oneHive) => { %>
     <li>
       <h2> <%= oneHive.name %> </h2>
-       <a href="/hives/<%= oneHive._id %>"> <%= oneHive.name %> </a>
+      // <a href="/hives/index"> Hives </a> <br/><br/>
 
-       <p> <%= oneHive.comment %> </p>
+      // <p> <%= oneHive.description %> </p>
+      // <img src="<%= oneRoom.picture %>">
     </li>
   <% }) %>
+</ul>
+
+
+<ul>
+  <% if (userInfo) { %>
+    <a href="/hives/new"> Create a new Hive </a> <br/><br/>
+    // <li> <a href="/secret">Secret</a> </li>
+    // <li> <a href="/kgb-files">KGB Files</a> </li>
+    // <li> <a href="/rooms/new"> Create New Room</a> </li>
+    <li> <a href="/rooms/index"> My Rooms </a> </li>
+
+    <li> <a href="/logout">Log Out</a> </li>
+
+  <% } else { %>
+    <li> <a href="/signup">Sign Up</a> </li>
+    <li> <a href="/login">Log In My Friend</a> </li>
+  <% } %>
 </ul>
