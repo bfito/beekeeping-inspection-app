@@ -27,27 +27,27 @@ hivesRoutes.post('/hives',
   // ('picture') refers to name="picture" in the form
   // uploads.single('picture'),
 
-  //  (req, res, next) => {
+    (req, res, next) => {
   //    const filename = req.file.filename;
 
-    new Hive ({
+    const newHive = new Hive ({
       name:  req.body.name,
       dateCreated: req.body.dateCreated,
       comment:  req.body.comment,
       // picture: `/uploads/${filename}`,
       owner: req.user._id   // <-- we add the user ID
-    }
-  ));
+    });
+    newHive.save ((err) => {
+      if (err) {
+        next(err);
+        return;
+      } else {
+        req.flash('success', 'Your hive has been created');
+        res.redirect('/hives/new');
+      }
+    });
+});
 
-  newHive.save ((err) => {
-    if (err) {
-      next(err);
-      return;
-    } else {
-      req.flash('success', 'Your hive has been created');
-      res.redirect('/hives/new');
-    }
-  });
 
 
 
