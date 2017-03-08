@@ -11,7 +11,10 @@ hivesRoutes.get('/hives/index', ensure.ensureLoggedIn(), (req, res, next) => {
   Hive.find({owner: req.user._id}, (err, myHives) => {
     if (err) { return next(err); }
 
-    res.render('hives/hive-index', { hives: myHives });
+    res.render('hives/hive-index', { 
+      hives: myHives,
+      userInfo: req.user
+    });
   });
 });
 
