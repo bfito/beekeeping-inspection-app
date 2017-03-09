@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Inspection</title>
+  </head>
+  <body>
+    <h1> <%= hive.name %> Inspection </h1>
+
+    <% if (errorMessage) { %>
+      <p class="error"> <%= errorMessage %> </p>
+    <% } %>
+
+    <% if (typeof errors !== 'undefined') { %>
+      <% for (let errorField in errors) { %>
+        <div> <%= errors[errorField].message %> </div>
+      <% } %>
+    <% } %>
+
+    <form action="/hives/<%= hive._id %>/inspections" method="POST">
+
+      <label for="dateInspected">Date Inspected</label>
+      <input type="date" name="dateInspected" id="dateInspected">
+
+      <label for="notes">Notes</label>
+      <textarea name="notes" rows="3" cols="80"></textarea>
+
+      <button type="submit">Submit Inspection</button>
+    </form>
+
+  </body>
+</html>

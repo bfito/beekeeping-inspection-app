@@ -5,9 +5,15 @@ const Inspection = require('./inspection-model.js');
 
 const hiveSchema = new Schema({
 owner: { type: Schema.Types.ObjectId, ref: "User" },
+
 name: { type: String, default: 'name' },
 dateCreated: Date,
-comment: String
+
+numberOfBroodBoxes: Number,
+numberOfFrames: Number,
+typeOfHive: {type: String, possibleValues: ['Nucleus Colony','Langstroth','Top Bar', '8 Frame', 'Other']},
+
+comment: String,
 });
 
 const Hive = mongoose.model("Hive", hiveSchema);
