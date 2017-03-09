@@ -4,8 +4,6 @@ const multer = require('multer');
 const Hive = require('../models/hive-model');
 const Inspection = require('../models/inspection-model');
 
-// req.query -> for the form
-const router  = express.Router();
 const inspectionsRoutes = express.Router();
 // const uploads = multer({ dest: '__dirname' + '/../public/uploads/' });
 
@@ -65,7 +63,7 @@ inspectionsRoutes.post('/inspections',
     });
 });
 
-router.post('/hive/:hiveId/inspections', (req, res, next) => {
+inspectionsRoutes.post('/hive/:hiveId/inspections', (req, res, next) => {
   const inspectionId = req.params.id;
   const inspectionUpdates = {
     dateInspected: req.body.dateInspected,
@@ -89,7 +87,7 @@ Hive.findByIdAndUpdate(hiveId, inspectionUpdates, (err, inspection) => {
   });
 });
 
-router.post('/hives/:id/delete', (req, res, next) => {
+inspectionsRoutes.post('/hives/:id/delete', (req, res, next) => {
   const hiveId = req.params.id;
   console.log(hiveId);
 

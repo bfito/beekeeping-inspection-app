@@ -22,11 +22,36 @@
       <label for="dateInspected">Date Inspected</label>
       <input type="date" name="dateInspected" id="dateInspected">
 
+
+      <label for="sighted"> Sighted </label>
+      <input type="radio" name="sighted" id="sighted" values='Queen','Eggs', 'Capped Brood', 'Uncapped Brood'>
+
+      
       <label for="notes">Notes</label>
       <textarea name="notes" rows="3" cols="80"></textarea>
 
       <button type="submit">Submit Inspection</button>
     </form>
+
+    <input type="radio" name="sighted" value="male">
+
+
+
+    population:    {type: String, possibleValues: ['Heavy','Moderate','Low']},
+    layingPattern: {type: String, possibleValues: ['Excellent','Fair', 'Porr']},
+    odor:          {type: String, possibleValues: ['Sweet','Foul', 'Fermented']},
+
+    diseasesPests: {type: String, possibleValues: ['American Foulbrood','Nosema', 'Small Hive Beetle', 'Varroa Mite']},
+
+    feedingStores: {type: String, possibleValues: ['Heavy','Moderate','Low']},
+
+    toDo: {
+      typeOfInspection: {type: String, possibleValues: [
+        'Regular inspection','Inspect for weakness','Check queen laying pattern', 'Check queen cells']},
+      dateCreated: Date,
+
+
+
 
   </body>
 </html>

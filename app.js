@@ -84,6 +84,17 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
+//Send logged-in user info into every view
+app.use((req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.locals.userInfo = req.user;
+  } else {
+    res.locals.userInfo = null;
+  }
+
+    next();
+});
+
 // ---------------_ROUTES GO HERE ---------------
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth-routes.js');

@@ -1,6 +1,4 @@
-<h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-
+<!--
 <% if (successMessage.length > 0) { %>
   <p class="success"> <%= successMessage %> </p>
 <% } %>
@@ -8,16 +6,80 @@
 <% if (userInfo) { %>
   <p> Welcome, <%= userInfo.firstName %>. </p>
 <% } %>
+-->
 
-<ul>
-  <% if (userInfo) { %>
 
-    <li> <a href="/hives/index"> My Hives </a> </li>
 
-    <li> <a href="/logout">Log Out</a> </li>
 
-  <% } else { %>
-    <li> <a href="/signup">Sign Up</a> </li>
-    <li> <a href="/login">Log In</a> </li>
-  <% } %>
-</ul>
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1 id="homeHeading">COLMENA</h1>
+            <hr>
+        </div>
+      </div>
+
+</header>
+
+<section id="services">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <!-- <h2 class="section-heading">At Your Service</h2> -->
+              <!-- <hr class="primary"> -->
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+              <div class="service-box">
+                  <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                  <h3>ORGANIZED HIVES & INSPECTIONS</h3>
+                  <p class="text-muted">Have the info about your hives and inspections online.</p>
+              </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 text-center">
+              <div class="service-box">
+                  <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                  <h3>BEEKEEPING INSPECTION LOGS</h3>
+                  <p class="text-muted">Record your inspections in a orderly fashion.</p>
+              </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 text-center">
+              <div class="service-box">
+                  <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                  <h3>PLAN YOUR NEXT INSPECTIONS</h3>
+                  <p class="text-muted">With the data and notes you make you can plan your next inspection!</p>
+              </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 text-center">
+              <div class="service-box">
+                  <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+                  <h3>YOUR BEES WILL LOVE YOU MORE</h3>
+                  <p class="text-muted">By keeping better track of your hives and planning your inspections, your bees will show more love with more honey!</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<aside class="bg-dark">
+  <div class="container text-center">
+      <div class="call-to-action">
+
+        <div class="col-lg-4 col-lg-offset-2 text-center">
+            <i class="fa fa-phone fa-3x sr-contact"></i>
+            <p>123-456-6789</p>
+        </div>
+        <div class="col-lg-4 text-center">
+            <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+            <p><a href="mailto:your-email@your-domain.com">email@godsavethequeensbees.com</a></p>
+        </div>
+
+      </div>
+  </div>
+</aside>
