@@ -89,11 +89,13 @@ const index = require('./routes/index');
 const authRoutes = require('./routes/auth-routes.js');
 // const protRoutes = require('./routes/protected-routes.js');
 const hivesRoutes = require('./routes/hives-routes.js');
+const inspectionsRoutes = require('./routes/hive-inspections.js');
 
 app.use('/', index);
 app.use('/', authRoutes);
 // app.use('/', protRoutes);
 app.use('/', hivesRoutes);
+app.use('/', inspectionsRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

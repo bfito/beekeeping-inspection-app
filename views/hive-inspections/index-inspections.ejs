@@ -17,11 +17,36 @@
       <p> <%= oneInspection.comment %>     </p>
     </li>
     <li> <a href="inspections/edit-inspections-view"> Edit Hive Inspection </a> </li>
-    <form action="/products/<%= oneProduct._id %>/delete" method="post">
+    <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
             <button type="submit"> Delete </button>
     <% }) %>
 
 </ul>
+
+
+<input type="radio" name="sighted" value="male"> Male<br>
+<input type="radio" name="gender" value="female"> Female<br>
+<input type="radio" name="gender" value="other"> Other
+
+dateInspected: Date,
+
+:       {type: String, possibleValues: ['Queen','Eggs', 'Capped Brood', 'Uncapped Brood']},
+population:    {type: String, possibleValues: ['Heavy','Moderate','Low']},
+layingPattern: {type: String, possibleValues: ['Excellent','Fair', 'Porr']},
+odor:          {type: String, possibleValues: ['Sweet','Foul', 'Fermented']},
+
+diseasesPests: {type: String, possibleValues: ['American Foulbrood','Nosema', 'Small Hive Beetle', 'Varroa Mite']},
+
+feedingStores: {type: String, possibleValues: ['Heavy','Moderate','Low']},
+
+toDo: {
+  typeOfInspection: {type: String, possibleValues: [
+    'Regular inspection','Inspect for weakness','Check queen laying pattern', 'Check queen cells']},
+  dateCreated: Date,
+
+
+
+
 
 
 <ul>

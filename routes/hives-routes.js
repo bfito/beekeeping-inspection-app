@@ -27,8 +27,7 @@ hivesRoutes.get('/hives/new', ensure.ensureLoggedIn(), (req, res, next) => {
 // router.post('/hives', ensureAuthenticated, (req, res, next) => {
 hivesRoutes.post('/hives',
   ensure.ensureLoggedIn(),
-  // ('picture') refers to name="picture" in the form
-  // uploads.single('picture'),
+
 
     (req, res, next) => {
   //    const filename = req.file.filename;
@@ -37,7 +36,6 @@ hivesRoutes.post('/hives',
       name:  req.body.name,
       dateCreated: req.body.dateCreated,
       comment:  req.body.comment,
-      // picture: `/uploads/${filename}`,
       owner: req.user._id   // <-- we add the user ID
     });
     newHive.save ((err) => {
@@ -67,6 +65,9 @@ router.post('/hives/:id', (req, res, next) => {
   const hiveUpdates = {
     name:  req.body.name,
     dateCreated: req.body.dateCreated,
+    numberOfBroodBoxes: req.body.numberOfBroodBoxes,
+    numberOfFrames: req.body.numberOfFrames,
+    typeOfHive: req.body.typeOfHive,
     comment:  req.body.comment,
     owner: req.user._id
 };
@@ -91,25 +92,9 @@ router.post('/hives/:id', (req, res, next) => {
         next(err);
         return;
       }
-      res.redirect('/hives');
+      res.render('hive-index');
     });
   });
-
-router.get('/hives/:id', (req, res, next) => {
-  let hiveId = req.params.id;
-
-  Hive.findById(hiveId, (err, hiveDoc) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.render('hives/show', {
-      hive: hiveDoc
-    });
-  });
-});
-
-
 
 
 module.exports = hivesRoutes;
