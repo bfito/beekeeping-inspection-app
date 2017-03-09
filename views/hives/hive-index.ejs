@@ -15,7 +15,7 @@
       <p> <%= oneHive.dateCreated %> </p>
       <p> <%= oneHive.comment %>     </p>
     </li>
-    <li> <a href="hives/edit-view"> Edit Hive </a> </li>
+    <li> <a href="/hives/<%= oneHive._id %>/edit"> Edit Hive </a> </li>
     <form action="/hives/<%= oneHive._id %>/delete" method="post">
             <button type="submit"> Delete </button>
 

@@ -3,7 +3,6 @@ const ensure = require('connect-ensure-login');
 const multer = require('multer');
 const Hive = require('../models/hive-model');
 
-const router  = express.Router();
 const hivesRoutes = express.Router();
 // const uploads = multer({ dest: '__dirname' + '/../public/uploads/' });
 
@@ -24,7 +23,7 @@ hivesRoutes.get('/hives/new', ensure.ensureLoggedIn(), (req, res, next) => {
   });
 });
 
-// router.post('/hives', ensureAuthenticated, (req, res, next) => {
+// hivesRoutes.post('/hives', ensureAuthenticated, (req, res, next) => {
 hivesRoutes.post('/hives',
   ensure.ensureLoggedIn(),
 
@@ -49,7 +48,7 @@ hivesRoutes.post('/hives',
     });
 });
 
-router.get('/hives/:id/edit', (req, res, next) => {
+hivesRoutes.get('/hives/:id/edit', (req, res, next) => {
   const hiveId = req.params.id;
 
   Hive.findById(hiveId, (err, hiveDoc) => {
@@ -60,7 +59,7 @@ router.get('/hives/:id/edit', (req, res, next) => {
   });
 });
 
-router.post('/hives/:id', (req, res, next) => {
+hivesRoutes.post('/hives/:id', (req, res, next) => {
   const hiveId = req.params.id;
   const hiveUpdates = {
     name:  req.body.name,
@@ -81,7 +80,7 @@ router.post('/hives/:id', (req, res, next) => {
     });
   });
 
-  router.post('/hives/:id/delete', (req, res, next) => {
+  hivesRoutes.post('/hives/:id/delete', (req, res, next) => {
     const hiveId = req.params.id;
 
     console.log(hiveId);
@@ -92,7 +91,7 @@ router.post('/hives/:id', (req, res, next) => {
         next(err);
         return;
       }
-      res.render('hive-index');
+      res.redirect('/hives/index');
     });
   });
 

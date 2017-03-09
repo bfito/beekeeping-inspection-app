@@ -4,21 +4,28 @@ const multer = require('multer');
 const Hive = require('../models/hive-model');
 const Inspection = require('../models/inspection-model');
 
-
+// req.query -> for the form
 const router  = express.Router();
 const inspectionsRoutes = express.Router();
 // const uploads = multer({ dest: '__dirname' + '/../public/uploads/' });
 
-inspectionsRoutes.get('/inspections/index', ensure.ensureLoggedIn(), (req, res, next) => {
-  Hives.find({hive: req.user._id}, (err, myInspections) => {
-    if (err) { return next(err); }
-
+inspectionsRoutes.get('/hive/:hiveId/inspections', ensure.ensureLoggedIn(), (req, res, next) => {
+  Inspection.find({ hive: req.params.hiveId }, (err, inspectionList) => {
     res.render('hive-inspections/index-inspections', {
-      inspections: myInspections,
-      hiveInfo: req.user
+      inspections: inspectionList,
+      userInfo: req.user
     });
   });
 });
+  // Hives.find({hive: req.hive._id}, (err, myInspections) => {
+  //   if (err) { return next(err); }
+  //
+  //   res.render('hive-inspections/index-inspections', {
+  //     inspections: myInspections,
+  //     hiveInfo: req.user
+  //   });
+  // });
+// });
 
 inspectionsRoutes.get('/hive/:hiveId/inspections/new', ensure.ensureLoggedIn(), (req, res, next) => {
   res.render('hives/new-view.ejs', {

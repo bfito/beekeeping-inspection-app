@@ -11,7 +11,7 @@ dateCreated: Date,
 
 numberOfBroodBoxes: Number,
 numberOfFrames: Number,
-typeOfHive: {type: String, possibleValues: ['Nucleus Colony','Langstroth','Top Bar', '8 Frame', 'Other']},
+typeOfHive: {type: String, enum: ['Nucleus Colony','Langstroth','Top Bar', '8 Frame', 'Other']},
 
 comment: String,
 });
