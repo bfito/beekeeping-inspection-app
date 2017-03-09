@@ -3,38 +3,38 @@
 
 <% if (userInfo) { %>
   <p> Welcome, <%= userInfo.firstName %>. </p>
-
 <% } %>
+
+<div>
+  <ul>
+    <% if (userInfo) { %>
+      <a href="/hives/new"> Create a new Hive </a> <br/><br/>
+
+      <% } else { %>
+        <li> <a href="/signup">Sign Up</a> </li>
+        <li> <a href="/login">Log In My Friend</a> </li>
+        <% } %>
+  </ul>
+</div>
 
 <h1> Your Hives </h1>
 
-<ul>
-  <% hives.forEach((oneHive) => { %>
-    <li>
-      <h2> <%= oneHive.name %> </h2>
-      <p> <%= oneHive.dateCreated %> </p>
-      <p> <%= oneHive.comment %>     </p>
-    </li>
-    <li> <a href="/hives/<%= oneHive._id %>/edit"> Edit Hive </a> </li>
-    <form action="/hives/<%= oneHive._id %>/delete" method="post">
-            <button type="submit"> Delete </button>
+<% hives.forEach((oneHive) => { %>
+<div class="hive-container">
+  <ul>
+      <li>
+        <h2> <%= oneHive.name %> </h2>
+        <p> <%= oneHive.dateCreated %> </p>
+        <p> <%= oneHive.comment %>     </p>
+      </li>
+        <form action="/hives/<%= oneHive._id %>/delete" method="post">
+              <button class="delete-btn" type="submit"> Delete </button>
+        <li> <a href="/hives/<%= oneHive._id %>/edit"> Edit Hive </a> </li>
 
-    <li> <a href="/hive/<%= oneHive._id %>/inspections"> Inspections</a> </li>
-    <% }) %>
+      // <li> <a href="/hive/<%= oneHive._id %>/inspections"> Inspections</a> </li>
+      <li> <a href="http://bashert.us/wp-content/uploads/2015/06/UnderConstruction.png"> Inspect this!</a> </li>
 
-</ul>
-
-
-<ul>
-  <% if (userInfo) { %>
-    <a href="/hives/new"> Create a new Hive </a> <br/><br/>
-
-    <li> <a href="/hives/index"> My Hives </a> </li>
-
-    <li> <a href="/logout">Log Out</a> </li>
-
-  <% } else { %>
-    <li> <a href="/signup">Sign Up</a> </li>
-    <li> <a href="/login">Log In My Friend</a> </li>
-  <% } %>
-</ul>
+      <hr>
+  </ul>
+</div>
+<% }) %>

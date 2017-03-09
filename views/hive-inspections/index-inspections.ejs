@@ -7,7 +7,7 @@
 <% } %>
 
 <h1> Your Hive Inspections </h1>
-<a href="/inspections/new"> New Inspection </a> <br/><br/>
+<a href="/hive/<%= oneHive._id %>/inspections/new-inspections-view"> New Inspection </a> <br/><br/>
 
 <ul>
   <% inspections.forEach((oneInspection) => { %>
@@ -16,7 +16,7 @@
       <p> <%= oneInspection.dateCreated %> </p>
       <p> <%= oneInspection.comment %>     </p>
     </li>
-    <li> <a href="inspections/edit-inspections-view"> Edit Hive Inspection </a> </li>
+    <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
     <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
             <button type="submit"> Delete </button>
     <% }) %>

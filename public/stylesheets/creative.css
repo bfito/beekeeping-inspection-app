@@ -14,7 +14,7 @@ body {
 hr {
   border-color: #F05F40;
   border-width: 3px;
-  max-width: 50px;
+  max-width: 90%;
 }
 hr.light {
   border-color: white;
@@ -421,4 +421,20 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #222222;
+}
+.unordered-without-bullets {
+  list-style-type: none;
+}
+.hive-container{
+  border: 1px solid;
+  width: auto;
+  background-color: #4c4c4c;
+  color: papayawhip;
+  border-radius: 10px;
+}
+.delete-btn{
+  background-color: red;
+  position: relative;
+  top:10%;
+  right: 10%;
 }

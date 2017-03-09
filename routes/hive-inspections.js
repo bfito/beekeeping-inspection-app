@@ -15,28 +15,16 @@ inspectionsRoutes.get('/hive/:hiveId/inspections', ensure.ensureLoggedIn(), (req
     });
   });
 });
-  // Hives.find({hive: req.hive._id}, (err, myInspections) => {
-  //   if (err) { return next(err); }
-  //
-  //   res.render('hive-inspections/index-inspections', {
-  //     inspections: myInspections,
-  //     hiveInfo: req.user
-  //   });
-  // });
-// });
 
 inspectionsRoutes.get('/hive/:hiveId/inspections/new', ensure.ensureLoggedIn(), (req, res, next) => {
-  res.render('hives/new-view.ejs', {
-    message: req.flash('success')
+  // Inspection.find({ hive: req.params.hiveId }, (err, inspectionList) => {
+    res.render('hives-inspections/new-inspections-view.ejs', {
+      message: req.flash('success')
+
   });
 });
 
-inspectionsRoutes.post('/inspections',
-  ensure.ensureLoggedIn(),
-  // ('picture') refers to name="picture" in the form
-  // uploads.single('picture'),
-
-    (req, res, next) => {
+inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next) => {
   //    const filename = req.file.filename;
 
     const newInspection = new Inspection ({

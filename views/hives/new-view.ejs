@@ -10,19 +10,32 @@
 <%# Deleted errorMessage. Incorporate later.%>
 
     <form action="/hives" method="post">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name">
+      <ul class="unordered-without-bullets">
+        <li>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+        </li>
+        <li>
+          <label for="dateCreated">Date Created </label>
+          <input type="Date" name="dateCreated" id="dateCreated">
+        </li>
+        <li>
+          <label for="numberOfBroodBoxes"> Number Of Boxes </label>
+          <input type="Number" name="numberOfBroodBoxes" id="numberOfBroodBoxes">
+        </li>
+        <li>
+          <label for="numberOfFrames"> Number Of Frames </label>
+          <input type="Number" name="numberOfFrames" id="numberOfFrames">
+        </li>
+        <li>
+          <label for="comment">Comment</label>
+          <textarea type="text" name="comment" id="comment"></textarea>
+        </li>
+        <%# <label for="image-url">Image URL</label>
+        <input type="text" name="imageUrl" id="image-url">%>
 
-      <label for="dateCreated">DateCreated </label>
-      <input type="Date" name="dateCreated" id="dateCreated">
-
-      <label for="comment">Comment</label>
-      <textarea type="text" name="comment" id="comment"></textarea>
-
-      <%# <label for="image-url">Image URL</label>
-      <input type="text" name="imageUrl" id="image-url">%>
-
-      <button type="submit">Create Hive</button>
+        <button type="submit">Create Hive</button>
+      </ul>
     </form>
 
     <a href="index"> Go Back to Hives </a>
