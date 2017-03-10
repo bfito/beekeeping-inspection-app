@@ -6,7 +6,7 @@ const Inspection = require('./inspection-model.js');
 const hiveSchema = new Schema({
 owner: { type: Schema.Types.ObjectId, ref: "User" },
 
-name: { type: String, default: 'name' },
+name: String,
 dateCreated: Date,
 
 numberOfBroodBoxes: Number,

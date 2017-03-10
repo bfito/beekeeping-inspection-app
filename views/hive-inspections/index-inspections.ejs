@@ -1,4 +1,4 @@
-<h1> HIVE INSPECTIONS </h1>
+<h1> HIVE INSPECTIONS <%= oneHive.name %> </h1>
 
 <a href="/hives/<%= oneHive %>/new-inspection" class="green-btn btn btn-default"> New Inspection </a> <br/><br/>
 
@@ -7,7 +7,7 @@
     <ul style="list-style: none;">
       <li>
         <h2> <u><%= oneHive.name %> HIVE NAME </u> </h2>
-        <h4> <strong>Created:</strong> <%= oneInspection.dateInspected %> </h4>
+        <h4> <strong>Created:<strong> <%= oneInspection.dateInspected %> </h4>
       <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view" class="link-btn btn btn-default"> Edit Hive Inspection </a> </li>
           <hr class="light">
           <button type="submit" class="option-buttons delete-inspection-btn btn btn-default"> Delete </button>
@@ -17,7 +17,7 @@
       <div class="col-sm-4">
         <h3>  NOTES </h3>
         <ul>
-          <li> <p>Saw a lot of activity today.</p> </li>
+          <li> <p>The hive is looking good, nice drawn comb.</p> </li>
           <li> <p><%= oneInspection.note %> </p> </li>
         </ul>
       </div>
