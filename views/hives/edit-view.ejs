@@ -1,22 +1,4 @@
-<div class="hive-container login-signIn-container">
-    <h1> Edit a Hive </h1>
-
-    <form action="/hives/<%= hive._id %>" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" value="<%= hive.name %>">
-
-      <label for="dateCreated">Date Created</label>
-      <input type="number" name="dateCreated" id="dateCreated">
-
-      <label for="comment">Comment</label>
-      <textarea type="text" name="comment" id="comment"><%= hive.description %></textarea>
-
-      <button type="submit">Update Hive</button>
-    </form>
-</div>
-
 <div class="container">
-
 
   <form action="/hives/<%= hive._id %>" method="POST" class="hive-container login-signIn-container">
     <h2>EDIT HIVE</h2>

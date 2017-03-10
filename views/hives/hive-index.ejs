@@ -29,14 +29,15 @@
       <li>
         <h2> <%= oneHive.name %> </h2>
         <p>  <%= oneHive.dateCreated %> </p>
-        <p> <%= oneHive.comment %>     </p>
+        <p> <%=  oneHive.comment %>     </p>
       </li>
         <li> <a href="/hives/<%= oneHive._id %>/edit"> Edit Hive </a> </li>
 
         <form action="/hives/<%= oneHive._id %>/delete" method="post">
         <button class="delete-btn" type="submit"> Delete </button>
+        </form>
 
-      <li> <a href="/hives/<%= oneHive._id %>/inspections"> Inspections</a>
+      <li> <a href="/hives/<%= oneHive._id %>/inspections"> Inspections</a> </li>
         <hr>
   </ul>
 </div>

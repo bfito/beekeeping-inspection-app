@@ -1,44 +1,72 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Add a New Hive</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Add a New Hive</h1>
+<%# <h3>I can already  smeel the honey</h3>%>
+<%# <a href="index"> Go Back to Hives </a>%>
 
 <%# Deleted errorMessage. Incorporate later.%>
-<div class="new-hive">
+<%# <div class="new-hive">
     <form action="/hives" method="post">
-      <ul class="unordered-without-bullets">
-        <li>
+      <ul class="unordered-without-bullets">%>
+        <%# <li>
           <label for="name">Name</label>
           <input type="text" id="name" name="name">
-        </li>
-        <li>
+        </li>%>
+        <%# <li>
           <label for="dateCreated">Date Created </label>
           <input type="Date" name="dateCreated" id="dateCreated">
-        </li>
-        <li>
+        </li>%>
+        <%# <li>
           <label for="numberOfBroodBoxes"> Number Of Boxes </label>
           <input type="Number" name="numberOfBroodBoxes" id="numberOfBroodBoxes">
-        </li>
-        <li>
+        </li>%>
+        <%# <li>
           <label for="numberOfFrames"> Number Of Frames </label>
           <input type="Number" name="numberOfFrames" id="numberOfFrames">
-        </li>
-        <li>
+        </li>%>
+        <%# <li>
           <label for="comment">Comment</label>
           <textarea type="text" name="comment" id="comment"></textarea>
-        </li>
+        </li>%>
         <%# <label for="image-url">Image URL</label>
         <input type="text" name="imageUrl" id="image-url">%>
 
-        <button class="submit-btn" type="submit">Create Hive</button>
+        <%# <button class="submit-btn" type="submit">Create Hive</button>
       </ul>
     </form>
-</div>
-    <a href="index"> Go Back to Hives </a>
+</div>%>
 
-  </body>
-</html>
+
+
+
+
+    <div class="container">
+
+      <form action="/hives" method="POST" class="hive-container login-signIn-container">
+        <h2>NEW HIVE</h2>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="name"
+                  placeholder="Name" name="name">
+        </div>
+
+        <div class="form-group">
+        <input type="date" class="form-control" id="dateCreated"
+                  placeholder="Date Created" name="dateCreated">
+        </div>
+
+        <div class="form-group">
+        <input type="number" class="form-control" id="numberOfBroodBoxes"
+                  placeholder="Number Of Brood Boxes" name="numberOfBroodBoxes">
+        </div>
+
+        <div class="form-group">
+        <input type="number" class="form-control" id="numberOfFrames"
+                  placeholder="Number Of Frames" name="numberOfFrames">
+        </div>
+
+        <div class="form-group">
+        <input type="text" class="form-control" id="comment"
+                  placeholder="Comment" name="comment">
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
