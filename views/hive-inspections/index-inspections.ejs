@@ -1,37 +1,36 @@
-<p>Welcome to <%= title %></p>
-
-<% if (userInfo) { %>
-  <p> Welcome, <%= userInfo.firstName %>. </p>
-
-<% } %>
-
 <h1> Hive Inspections </h1>
 
-<a href="/hives/<%= oneHive %>/new-inspection"> New Inspection </a> <br/><br/>
+<a href="/hives/<%= oneHive %>/new-inspection" class="green-btn btn btn-default"> New Inspection </a> <br/><br/>
 
     <% inspections.forEach((oneInspection) => { %>
       <div class="hive-container">
       <ul style="list-style: none;">
       <li>
         <h2> <u><%= oneHive.name %> HIVE NAME </u> </h2>
-        <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
+        <h4> Created: <%= oneInspection.dateInspected %> </h4>
+        <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view" class="link-btn btn btn-default"> Edit Hive Inspection </a> </li>
           <hr class="light">
+          <button type="submit" class="delete-btn btn btn-default"> Delete </button>
+          <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
 
+<div>
+      <div>
         <h3>  NOTES </h3>
         <ul>
-          <li>
-            <%= oneInspection.note %>
-          </li>
+          <li> <p>Saw a lot of activity today.</p> </li>
+          <li> <%= oneInspection.note %> </li>
         </ul>
+      </div>
 
+      <div>
         <h3>  TO DO </h3>
         <ol>
           <li>
            <%= oneInspection.toDo %>
            </li>
         </ol>
-        <button type="submit" class="delete-btn btn btn-default"> Delete </button>
-        <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
+      </div>
+
         <hr>
       </li>
       </ul>

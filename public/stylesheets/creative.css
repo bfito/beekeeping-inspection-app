@@ -452,20 +452,17 @@ body {
 }
 .delete-btn{
   background-color: #F05F40;
-  position: absolute;;
-  right: 10%;
+  margin:2px;
 }
 .link-btn{
   background-color: #689ac5;
   color: white;
-  /*position: absolute;;
-  right: 10%;*/
+  margin: 2px;
 }
 .green-btn{
   background-color: #3c763d;
   color: white;
-  /*position: absolute;;
-  right: 10%;*/
+  margin: 2px;
 }
 .wrapper {
     background: #ccc;
@@ -491,4 +488,13 @@ body {
   right: 50%;*/
   padding: 10px;
   width: 30%;
+}
+.hive-title{
+  position: relative;
+  top: -2%;
+  left: 5%;
+}
+.welcome{
+  text-align:center;
+  margin: 10px;
 }

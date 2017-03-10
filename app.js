@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 
 // default value for title local
 // app.locals.title = 'Express - Generated with IronGenerator';
-app.locals.title = 'COLMENA LOGS';
+app.locals.title = 'COLMENA';
 
 
 // uncomment after placing your favicon in /public

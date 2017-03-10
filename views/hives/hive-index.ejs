@@ -1,16 +1,15 @@
-<div>
-  <h1> </h1>
-  <p>WELCOME TO <%= title %></p>
+<div class="welcome">
 
   <% if (userInfo) { %>
-    <p> Hello, <%= userInfo.firstName %>.  </p>
+    <h3> Hello, <strong> <%= userInfo.firstName %>. </strong>  </h3>
   <% } %>
+  <h2>WELCOME TO <%= title %></h2>
 </div>
 
-<div>
+<div class="hive-title">
   <ul style="list-style: none;">
     <li> <h1> Your Hives </h1> </li>
-    <li> <a href="/hives/new" class="link-btn btn btn-default">Create a new Hive </a> </li>
+    <li> <a href="/hives/new" class="green-btn btn btn-default">Create a new Hive </a> </li>
   </ul>
 </div>
 
@@ -26,22 +25,26 @@
   </ul>
 </div>
 
-<% hives.forEach((oneHive) => { %>
-<div class="hive-container">
-  <ul style="list-style: none;">
-      <li>
-        <h2> <%= oneHive.name %> </h2>
-        <p>  <%= oneHive.dateCreated %> </p>
-        <p> <%=  oneHive.comment %>     </p>
-      </li>
-        <li> <a href="/hives/<%= oneHive._id %>/edit" class="green-btn btn btn-default"> Edit Hive </a> </li>
+<div class="container">
+  <div class="row">
+    <% hives.forEach((oneHive) => { %>
+      <div class="hive-container col">
+        <ul style="list-style: none;">
+            <li>
+              <h2> <%= oneHive.name %> </h2>
+              <p>  <%= oneHive.dateCreated %> </p>
+              <p> <%=  oneHive.comment %>     </p>
+            </li>
+              <li> <a href="/hives/<%= oneHive._id %>/inspections" class="link-btn btn btn-default"> Inspections</a> </li>
+              <li> <a href="/hives/<%= oneHive._id %>/edit" class="link-btn btn btn-default"> Edit Hive </a> </li>
 
-        <form action="/hives/<%= oneHive._id %>/delete" method="post">
-        <button class="delete-btn btn btn-default" type="submit"> Delete </button>
-        </form>
+              <form action="/hives/<%= oneHive._id %>/delete" method="post">
+              <button class="delete-btn btn btn-default" type="submit"> Delete </button>
+              </form>
 
-      <li> <a href="/hives/<%= oneHive._id %>/inspections" class="green-btn btn btn-default"> Inspections</a> </li>
-        <hr>
-  </ul>
+              <hr>
+        </ul>
+      </div>
+    <% }) %>
+  </div>
 </div>
-<% }) %>
