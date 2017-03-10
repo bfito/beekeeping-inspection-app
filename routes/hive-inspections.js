@@ -7,20 +7,26 @@ const Inspection = require('../models/inspection-model');
 const inspectionsRoutes = express.Router();
 // const uploads = multer({ dest: '__dirname' + '/../public/uploads/' });
 
-inspectionsRoutes.get('/hive/:hiveId/inspections', ensure.ensureLoggedIn(), (req, res, next) => {
+inspectionsRoutes.get('/hives/:hiveId/inspections', ensure.ensureLoggedIn(), (req, res, next) => {
+  // console.log("Inside /hives/:hiveId/inspections");
   Inspection.find({ hive: req.params.hiveId }, (err, inspectionList) => {
-    res.render('hive-inspections/index-inspections', {
+    res.render('hive-inspections/index-inspections.ejs', {
       inspections: inspectionList,
-      userInfo: req.user
+      userInfo: req.user,
+      oneHive: req.params.hiveId,
     });
   });
 });
 
-inspectionsRoutes.get('/hive/:hiveId/inspections/new', ensure.ensureLoggedIn(), (req, res, next) => {
-  // Inspection.find({ hive: req.params.hiveId }, (err, inspectionList) => {
-    res.render('hives-inspections/new-inspections-view.ejs', {
-      message: req.flash('success')
-
+inspectionsRoutes.get('/hives/:hiveId/new-inspection', ensure.ensureLoggedIn(), (req, res, next) => {
+  // console.log("Inside /hives/:hiveId/inspections");
+  Inspection.find({ hive: req.params.hiveId }, (err, inspectionList) => {
+    res.render('hive-inspections/new-inspections-view.ejs', {
+      inspections: inspectionList,
+      userInfo: req.user,
+      message: req.flash('success'),
+      oneHive: req.params.hiveId
+    });
   });
 });
 
@@ -46,12 +52,12 @@ inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next)
         return;
       } else {
         req.flash('success', 'Your hive has been created');
-        res.redirect('/hive/:hiveId/inspections/new');
+        res.redirect('/hives/:hiveId/inspections/new');
       }
     });
 });
 
-inspectionsRoutes.post('/hive/:hiveId/inspections', (req, res, next) => {
+inspectionsRoutes.post('/hives/:hiveId/inspections', (req, res, next) => {
   const inspectionId = req.params.id;
   const inspectionUpdates = {
     dateInspected: req.body.dateInspected,
@@ -88,82 +94,5 @@ inspectionsRoutes.post('/hives/:id/delete', (req, res, next) => {
     res.redirect('/hives/inspections');
   });
 });
-//
-//
-//   Hive.findById(hiveId, (err, hiveDoc) => {
-//     if (err) {
-//       next(err);
-//       return;
-//     }
-//     res.render('hive-inspections/new-inspections-view', {
-//       inspection: inspectionDoc
-//     });
-//   });
-//
-//
-// inspectionsRoutes.get('/hive/:hiveId/inspections', (req, res, next) => {
-//   const hiveId = req.params.hiveId;
-//
-//   Inspection.findById(hiveId === inspectionsId, (err, hiveDoc) => {
-//     if (err) {
-//       next(err);
-//       return;
-//     }
-//
-//   res.render('hive-inspections/index-inspections', { inspections: myInspections });
-//   });
-// });
-//
-//
-// inspectionsRoutes.post('/hive/:hiveId/inspections', (req, res, next) => {
-// const hiveId = req.params.hiveId;
-//
-// Hive.findById(hiveId, (err, hiveDoc) => {
-//   if (err) {
-//     next(err);
-//     return;
-//   }
-//
-//   const inspectionInfo = {
-//     dateInspected: req.body.dateInspected,
-//     notes: req.body.notes,
-//   };
-// // console.log(inspectionInfo);
-//   const theInspection = new Inspection(inspectionInfo);
-//
-//   hiveDoc.inspections.push(theInspection);
-//
-//   hiveDoc.save((err) => {
-//     if (err) {
-//       res.render('hive-inspections/new-inspections-view', {
-//         errorMessage: 'Inspection submit failed!',
-//         errors: theHive.errors
-//       });
-//       return;
-//     }
-//     res.redirect(`/hive/${hiveId}`);
-//     });
-//   });
-// });
-// //
-// //
-// //
-// // Had Removed ensure.ensureLoggedIn(), following my logic that user needs to be logged in anyways before reaching this section...
-// inspectionsRoutes.get('/hives/:hiveId/inspections/new', ensure.ensureLoggedIn(), (req, res, next) => {
-//   const hiveId = req.params.hiveId;
-//
-//
-//   Hive.findById(hiveId, (err, hiveDoc) => {
-//     if (err) {
-//       next(err);
-//       return;
-//     }
-//     res.render('hive-inspections/new-inspections-view', {
-//       inspection: inspectionDoc
-//     });
-//   });
-// });
-
-
 
 module.exports = inspectionsRoutes;

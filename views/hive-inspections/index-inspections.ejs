@@ -7,46 +7,42 @@
 <% } %>
 
 <h1> Your Hive Inspections </h1>
-<a href="/hive/<%= oneHive._id %>/inspections/new-inspections-view"> New Inspection </a> <br/><br/>
+<a href="/hives/<%= oneHive %>/new-inspection"> New Inspection </a> <br/><br/>
 
 <ul>
   <% inspections.forEach((oneInspection) => { %>
     <li>
       <h2> <%= oneInspection.name %> </h2>
       <p> <%= oneInspection.dateCreated %> </p>
-      <p> <%= oneInspection.comment %>     </p>
     </li>
     <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
     <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
             <button type="submit"> Delete </button>
     <% }) %>
-
 </ul>
 
+<div class="notes col-md-4">
+  <h2>Add a Note</h2>      <div class="input-group ">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+    <span class="input-group-addon" id="basic-addon2">Add Note</span>
+  </div>
+</div>
 
-<input type="radio" name="sighted" value="male"> Male<br>
-<input type="radio" name="gender" value="female"> Female<br>
-<input type="radio" name="gender" value="other"> Other
+<div class="toDo col-md-4">
+  <h2>Add a To Do</h2>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+    <span class="input-group-addon" id="basic-addon2">Add a To Do</span>
+  </div>
+</div>
 
-dateInspected: Date,
-
-:       {type: String, possibleValues: ['Queen','Eggs', 'Capped Brood', 'Uncapped Brood']},
-population:    {type: String, possibleValues: ['Heavy','Moderate','Low']},
-layingPattern: {type: String, possibleValues: ['Excellent','Fair', 'Porr']},
-odor:          {type: String, possibleValues: ['Sweet','Foul', 'Fermented']},
-
-diseasesPests: {type: String, possibleValues: ['American Foulbrood','Nosema', 'Small Hive Beetle', 'Varroa Mite']},
-
-feedingStores: {type: String, possibleValues: ['Heavy','Moderate','Low']},
-
-toDo: {
-  typeOfInspection: {type: String, possibleValues: [
-    'Regular inspection','Inspect for weakness','Check queen laying pattern', 'Check queen cells']},
-  dateCreated: Date,
-
-
-
-
+<div class="images col-md-4">
+  <h2>Add an Image</h2>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+      <span class="input-group-addon" id="basic-addon2">Add an Image</span>
+    </div>
+</div>
 
 
 <ul>

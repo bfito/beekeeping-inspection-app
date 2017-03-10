@@ -432,9 +432,21 @@ body {
   color: papayawhip;
   border-radius: 10px;
 }
+.new-hive{
+  position: absolute;
+  right: 0 50% 0 50%;
+  padding: 10px;
+  border: 1px solid;
+  width: auto;
+  background-color: #4c4c4c;
+  color: papayawhip;
+  border-radius: 10px;
+}
+.submit-btn{
+  background-color: #3ed23e;
+}
 .delete-btn{
-  background-color: red;
-  position: relative;
-  top:10%;
+  background-color: #F05F40;
+  position: absolute;;
   right: 10%;
 }

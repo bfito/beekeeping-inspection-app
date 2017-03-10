@@ -1,0 +1,63 @@
+<h1> </h1>
+<p>Welcome to <%= title %></p>
+
+<% if (userInfo) { %>
+  <p> Welcome, <%= userInfo.firstName %>. </p>
+
+<% } %>
+
+<h1> Your Hive Inspections </h1>
+<a href="/hive/<%= inspections.hive %>/inspections/new-inspections-view"> New Inspection </a> <br/><br/>
+
+<ul>
+  <% inspections.forEach((oneInspection) => { %>
+    <li>
+      <h2> <%= oneInspection.name %> </h2>
+      <p> <%= oneInspection.dateCreated %> </p>
+      <p> <%= oneInspection.comment %>     </p>
+    </li>
+    <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
+    <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
+            <button type="submit"> Delete </button>
+    <% }) %>
+
+</ul>
+
+
+<%# <input type="radio" name="sighted" value="male"> Male<br>
+<input type="radio" name="gender" value="female"> Female<br>
+<input type="radio" name="gender" value="other"> Other%>
+
+<%# dateInspected: Date,
+
+:       {type: String, possibleValues: ['Queen','Eggs', 'Capped Brood', 'Uncapped Brood']},
+population:    {type: String, possibleValues: ['Heavy','Moderate','Low']},
+layingPattern: {type: String, possibleValues: ['Excellent','Fair', 'Porr']},
+odor:          {type: String, possibleValues: ['Sweet','Foul', 'Fermented']},
+
+diseasesPests: {type: String, possibleValues: ['American Foulbrood','Nosema', 'Small Hive Beetle', 'Varroa Mite']},
+
+feedingStores: {type: String, possibleValues: ['Heavy','Moderate','Low']},
+
+toDo: {
+  typeOfInspection: {type: String, possibleValues: [
+    'Regular inspection','Inspect for weakness','Check queen laying pattern', 'Check queen cells']},
+  dateCreated: Date,%>
+
+
+
+
+
+
+<ul>
+  <% if (userInfo) { %>
+
+    <li> <a href="/hives/index"> My Hives </a> </li>
+
+    <li> <a href="/logout">Log Out</a> </li>
+
+  <% } else { %>
+    <li> <a href="/signup">Sign Up</a> </li>
+    <li> <a href="/login">Log In My Friend</a> </li>
+  <% } %>
+</ul>

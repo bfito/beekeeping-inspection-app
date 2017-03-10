@@ -27,13 +27,13 @@
         <p> <%= oneHive.dateCreated %> </p>
         <p> <%= oneHive.comment %>     </p>
       </li>
-        <form action="/hives/<%= oneHive._id %>/delete" method="post">
-              <button class="delete-btn" type="submit"> Delete </button>
         <li> <a href="/hives/<%= oneHive._id %>/edit"> Edit Hive </a> </li>
 
-      <li> <a href="http://bashert.us/wp-content/uploads/2015/06/UnderConstruction.png"> Inspect this!</a> </li>
+        <form action="/hives/<%= oneHive._id %>/delete" method="post">
+        <button class="delete-btn" type="submit"> Delete </button>
 
-      <hr>
+      <li> <a href="/hives/<%= oneHive._id %>/inspections"> Inspections</a>
+        <hr>
   </ul>
 </div>
 <% }) %>
