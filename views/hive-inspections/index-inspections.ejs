@@ -13,7 +13,8 @@
   <% inspections.forEach((oneInspection) => { %>
     <li>
       <h2> <%= oneInspection.name %> </h2>
-      <p> <%= oneInspection.dateCreated %> </p>
+      <p> <%= oneInspection.note %> </p>
+      <p> <%= oneInspection.toDo %> </p>
     </li>
     <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
     <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
