@@ -3,16 +3,21 @@
   <p>WELCOME TO <%= title %></p>
 
   <% if (userInfo) { %>
-    <p> HELLO, <%= userInfo.firstName %>. </p>
+    <p> Hello, <%= userInfo.firstName %>.  </p>
   <% } %>
 </div>
 
-<h1> Your Hives </h1>
+<div>
+  <ul style="list-style: none;">
+    <li> <h1> Your Hives </h1> </li>
+    <li> <a href="/hives/new" class="link-btn btn btn-default">Create a new Hive </a> </li>
+  </ul>
+</div>
 
 <div>
   <ul>
     <% if (userInfo) { %>
-      <a href="/hives/new">Create a new Hive </a> <br/><br/>
+
 
       <% } else { %>
         <li> <a href="/signup">Sign Up</a> </li>
@@ -29,13 +34,13 @@
         <p>  <%= oneHive.dateCreated %> </p>
         <p> <%=  oneHive.comment %>     </p>
       </li>
-        <li> <a href="/hives/<%= oneHive._id %>/edit"> Edit Hive </a> </li>
+        <li> <a href="/hives/<%= oneHive._id %>/edit" class="green-btn btn btn-default"> Edit Hive </a> </li>
 
         <form action="/hives/<%= oneHive._id %>/delete" method="post">
         <button class="delete-btn btn btn-default" type="submit"> Delete </button>
         </form>
 
-      <li> <a href="/hives/<%= oneHive._id %>/inspections"> Inspections</a> </li>
+      <li> <a href="/hives/<%= oneHive._id %>/inspections" class="green-btn btn btn-default"> Inspections</a> </li>
         <hr>
   </ul>
 </div>

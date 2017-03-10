@@ -455,7 +455,18 @@ body {
   position: absolute;;
   right: 10%;
 }
-
+.link-btn{
+  background-color: #689ac5;
+  color: white;
+  /*position: absolute;;
+  right: 10%;*/
+}
+.green-btn{
+  background-color: #3c763d;
+  color: white;
+  /*position: absolute;;
+  right: 10%;*/
+}
 .wrapper {
     background: #ccc;
     margin: 0 auto; /* to make the div center align to the browser */
