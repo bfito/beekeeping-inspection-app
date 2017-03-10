@@ -3,7 +3,7 @@
       <a href="/hives/<%= oneHive %>/inspections"> Inspections</a>
     </div>
 
-<form action="/inspections" method="POST" class="hive-container">
+<form action="/inspections/<%= oneHive %>" method="POST" class="hive-container">
   <div class="notes col-md-3">
     <h2>Date of Inspection</h2>      <div class="input-group ">
       <input

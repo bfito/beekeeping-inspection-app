@@ -30,16 +30,17 @@ inspectionsRoutes.get('/hives/:hiveId/new-inspection', ensure.ensureLoggedIn(), 
   });
 });
 
-inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next) => {
+inspectionsRoutes.post('/inspections/:hiveId', ensure.ensureLoggedIn(), (req, res, next) => {
   //    const filename = req.file.filename;
   Inspection.find({ hive: req.params.hiveId }, (err, inspectionList) => {
+    console.log("inside inspection new post ");
 
     const newInspection = new Inspection ({
       dateInspected:  req.body.dateInspected,
       note: req.body.note,
       toDo:  req.body.toDo,
-      image:  req.body.toDo,
-
+      // image:  req.body.toDo,
+      // hive: req.hive._Id
       hive: req.params.hiveId
     });
 
@@ -49,7 +50,7 @@ inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next)
         return;
       } else {
         req.flash('success', 'Your hive has been created');
-        res.redirect('/hives/:hiveId/inspections/new');
+        res.redirect(`/hives/${req.params.hiveId}/inspections`);
       }
     });
 });
@@ -80,7 +81,7 @@ Hive.findByIdAndUpdate(hiveId, inspectionUpdates, (err, inspection) => {
   });
 });
 
-inspectionsRoutes.post('/hives/:id/delete', (req, res, next) => {
+inspectionsRoutes.post('/hives/:hiveId/delete', (req, res, next) => {
   const hiveId = req.params.id;
   console.log(hiveId);
 
