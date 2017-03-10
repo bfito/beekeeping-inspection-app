@@ -1,38 +1,51 @@
-<h1> Hive Inspections </h1>
+<h1> HIVE INSPECTIONS </h1>
 
 <a href="/hives/<%= oneHive %>/new-inspection" class="green-btn btn btn-default"> New Inspection </a> <br/><br/>
 
-    <% inspections.forEach((oneInspection) => { %>
-      <div class="hive-container">
-      <ul style="list-style: none;">
+<% inspections.forEach((oneInspection) => { %>
+  <div class="hive-container">
+    <ul style="list-style: none;">
       <li>
         <h2> <u><%= oneHive.name %> HIVE NAME </u> </h2>
-        <h4> Created: <%= oneInspection.dateInspected %> </h4>
-        <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view" class="link-btn btn btn-default"> Edit Hive Inspection </a> </li>
+        <h4> <strong>Created:</strong> <%= oneInspection.dateInspected %> </h4>
+      <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view" class="link-btn btn btn-default"> Edit Hive Inspection </a> </li>
           <hr class="light">
-          <button type="submit" class="delete-btn btn btn-default"> Delete </button>
+          <button type="submit" class="option-buttons delete-inspection-btn btn btn-default"> Delete </button>
           <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
 
-<div>
-      <div>
+    <div class="row">
+      <div class="col-sm-4">
         <h3>  NOTES </h3>
         <ul>
           <li> <p>Saw a lot of activity today.</p> </li>
-          <li> <%= oneInspection.note %> </li>
+          <li> <p><%= oneInspection.note %> </p> </li>
         </ul>
       </div>
 
-      <div>
+      <div class="col-sm-4">
         <h3>  TO DO </h3>
         <ol>
-          <li>
-           <%= oneInspection.toDo %>
-           </li>
+          <li> <p>Check for pests like hive beetles.</p> </li>
+          <li> <p><%= oneInspection.toDo %> </p> </li>
         </ol>
       </div>
 
-        <hr>
-      </li>
-      </ul>
+      <div class="col-sm-3">
+        <h3>  IMAGES </h3>
+        <ol style="list-style: none;">
+          <li>
+            <a href="http://www.beverlybees.com/wp-content/uploads/2012/03/Spring-Hive-Inspection-1102x350.jpg">
+              <img src="http://www.beverlybees.com/wp-content/uploads/2012/03/Spring-Hive-Inspection-1102x350.jpg" height="72" width="72" margin="2px">
+            </a>
+            <a href="http://www.thehivelife.com/wp-content/uploads/2012/11/093012-inspection-3.jpg">
+              <img src="http://www.thehivelife.com/wp-content/uploads/2012/11/093012-inspection-3.jpg" height="72" width="72" margin="2px">
+            </a>
+           </li>
+        </ol>
       </div>
-      <% }) %>
+    </div>
+          <hr>
+        </li>
+      </ul>
+  </div>
+<% }) %>

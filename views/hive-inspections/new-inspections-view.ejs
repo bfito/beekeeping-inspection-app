@@ -1,9 +1,9 @@
     <div>
       <h1> New Inspection </h1>
-      <a href="/hives/<%= oneHive %>/inspections"> Inspections</a>
+      <a href="/hives/<%= oneHive %>/inspections" class="link-btn btn btn-default">Go back to Inspections</a>
     </div>
 
-<form action="/inspections/<%= oneHive %>" method="POST" class="hive-container">
+<form action="/inspections/<%= oneHive %>" method="POST" class="new-inspection-container">
   <div class="notes col-md-3">
     <h2>Date of Inspection</h2>      <div class="input-group ">
       <input
@@ -46,19 +46,5 @@
       </div>
   </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="green-btn freekin-submit-btn btn btn-default">Submit</button>
 </form>
-
-  <div>
-    <ul>
-      <% inspections.forEach((oneInspection) => { %>
-        <li>
-          <h2> <%= oneInspection.name %> </h2>
-          <p> <%= oneInspection.dateCreated %> </p>
-        </li>
-        <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
-        <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
-                <button type="submit"> Delete </button>
-        <% }) %>
-    </ul>
-  </div>

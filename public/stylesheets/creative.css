@@ -447,12 +447,28 @@ body {
   color: papayawhip;
   border-radius: 10px;
 }
+.new-inspection-container{
+  border: 1px solid;
+  width: auto;
+  height: 25%;
+  background-color: #4c4c4c;
+  color: papayawhip;
+  border-radius: 10px;
+}
 .submit-btn{
   background-color: #3ed23e;
 }
-.delete-btn{
+.delete-hive-btn{
   background-color: #F05F40;
   margin:2px;
+  position: relative;
+  right: -67%;
+}
+.delete-inspection-btn{
+  background-color: #F05F40;
+  margin:2px;
+  /*position: relative;
+  right: -67%;*/
 }
 .link-btn{
   background-color: #689ac5;
@@ -497,4 +513,12 @@ body {
 .welcome{
   text-align:center;
   margin: 10px;
+}
+.freekin-submit-btn{
+  position: relative;
+  top: 9%;
+  right: -1%;
+}
+.option-buttons{
+  display: inline;
 }
