@@ -34,18 +34,14 @@ inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next)
   //    const filename = req.file.filename;
 
     const newInspection = new Inspection ({
-      dateInspected: req.body.dateInspected,
-      sighted:       req.body.sighted,
-      population:    req.body.population,
-      layingPattern: req.body.layingPattern,
-      odor:          req.body.odor,
-      diseasesPests: req.body.diseasesPests,
-      feedingStores: req.body.feedingStores,
-      toDo:          req.body.toDo, //Not sure if i need to add appended options in here or if it pulls them automatically
-      notes:         req.body.notes,
+      dateInspected:  req.body.dateInspected,
+      note: req.body.note,
+      toDo:  req.body.toDo,
+      image:  req.body.toDo,
 
       hive: req.hive._id
     });
+
     newInspection.save ((err) => {
       if (err) {
         next(err);

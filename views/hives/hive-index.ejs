@@ -1,14 +1,20 @@
-<h1> </h1>
-<p>Welcome to <%= title %></p>
+<div>
+  <h1> </h1>
+  <p>WELCOME TO <%= title %></p>
 
-<% if (userInfo) { %>
-  <p> Welcome, <%= userInfo.firstName %>. </p>
-<% } %>
+  <% if (userInfo) { %>
+    <p> HELLO, <%= userInfo.firstName %>. </p>
+  <% } %>
+
+
+</div>
+
+<h1> Your Hives </h1>
 
 <div>
   <ul>
     <% if (userInfo) { %>
-      <a href="/hives/new"> Create a new Hive </a> <br/><br/>
+      <a href="/hives/new">Create a new Hive </a> <br/><br/>
 
       <% } else { %>
         <li> <a href="/signup">Sign Up</a> </li>
@@ -17,14 +23,12 @@
   </ul>
 </div>
 
-<h1> Your Hives </h1>
-
 <% hives.forEach((oneHive) => { %>
 <div class="hive-container">
-  <ul>
+  <ul style="list-style: none;">
       <li>
         <h2> <%= oneHive.name %> </h2>
-        <p> <%= oneHive.dateCreated %> </p>
+        <p>  <%= oneHive.dateCreated %> </p>
         <p> <%= oneHive.comment %>     </p>
       </li>
         <li> <a href="/hives/<%= oneHive._id %>/edit"> Edit Hive </a> </li>

@@ -394,7 +394,7 @@ fieldset[disabled] .btn-primary.active {
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   border: none;
-  border-radius: 300px;
+  border-radius: 5px;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -449,4 +449,30 @@ body {
   background-color: #F05F40;
   position: absolute;;
   right: 10%;
+}
+
+.wrapper {
+    background: #ccc;
+    margin: 0 auto; /* to make the div center align to the browser */
+    padding: 20px;
+    width: 500px; /* set it to anything */
+    text-align: center;
+}
+
+.login-signIn-container {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  right: 50%;
+  padding: 10px;
+  width: 30%;
+}
+
+.heading-container {
+  /*position: absolute;
+  top: 30%;
+  left: 35%;
+  right: 50%;*/
+  padding: 10px;
+  width: 30%;
 }

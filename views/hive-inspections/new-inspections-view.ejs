@@ -5,113 +5,51 @@
     <title>New Inspection</title>
   </head>
   <body>
-    <h1>  Inspection </h1>
 
 
 
 
-    <form action="/hives/<%= oneHive %>/inspections" method="POST">
+    <div>
+      <h1> New Inspection </h1>
+      <a href="/hives/<%= oneHive %>/inspections"> Inspections</a>
+    </div>
 
-<div>
-      <label for="dateInspected">Date Inspected</label>
-      <input type="date" name="dateInspected" id="dateInspected">
+      <div class="notes col-md-4">
+        <h2>Add a Note</h2>      <div class="input-group ">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+          <span class="input-group-addon" id="basic-addon2">Add Note</span>
+        </div>
+      </div>
 
-      <label for="sighted"> Sighted </label>
-      <input type="checkbox" name="sighted" id="sighted" values='Sighted-Queen'>Queen
+      <div class="toDo col-md-4">
+        <h2>Add a To Do</h2>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+          <span class="input-group-addon" id="basic-addon2">Add a To Do</span>
+        </div>
+      </div>
 
-      <label for="sighted"> Sighted </label>
-      <input type="checkbox" name="sighted" id="sighted" values='Sighted-Eggs'>Eggs
+      <div class="images col-md-4">
+        <h2>Add an Image</h2>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">Add an Image</span>
+          </div>
+      </div>
 
-      <label for="sighted"> Sighted </label>
-      <input type="checkbox" name="sighted" id="sighted" values='Sighted-CappedBrood'>Capped Brood
-
-      <label for="sighted"> Sighted </label>
-      <input type="checkbox" name="sighted" id="sighted" values='Sighted-UncappedBrood'>Uncapped Brood
-</div>
-
-<div>
-  <h3>Population</h3>
-      <input type="radio" name="population" value="Heavy">Heavy
-
-      <input type="radio" name="population" value="Moderate">Moderate
-
-      <input type="radio" name="population" value="Low">Low
-</div>
-
-<div>
-  <h3>Laying Pattern</h3>
-  <input type="radio" name="layingPattern" value="Excellent">Excellent
-
-  <input type="radio" name="layingPattern" value="Fair">Fair
-
-  <input type="radio" name="layingPattern" value="Poor">Poor
-</div>
-
-<div>
-  <h3>Odor</h3>
-  <input type="radio" name="odor" value="Sweet">Sweet
-
-  <input type="radio" name="odor" value="Foul">Foul
-
-  <input type="radio" name="odor" value="Fermented">Fermented
-</div>
-
-<div>
-    <h3>Sighted</h3>
-      <%# <label for="sighted"> Sighted </label>%>
-      <input type="checkbox" name="sighted" id="sighted" values='American Foulbrood'>American Foulbrood
-
-      <%# <label for="sighted"> Sighted </label>%>
-      <input type="checkbox" name="sighted" id="sighted" values='Sighted-Eggs'>Eggs
-
-      <%# <label for="sighted"> Sighted </label>%>
-      <input type="checkbox" name="sighted" id="sighted" values='Sighted-CappedBrood'>Capped Brood
-
-      <%# <label for="sighted"> Sighted </label>%>
-      <input type="checkbox" name="sighted" id="sighted" values='Sighted-UncappedBrood'>Uncapped Brood
-</div>
-
-<div>
-  <h3>Feeding Stores</h3>
-  <input type="radio" name="feedingStores" value="Heavy">Heavy
-
-  <input type="radio" name="feedingStores" value="Moderate">Moderate
-
-  <input type="radio" name="feedingStores" value="Low">Low
-</div>
-
-<div>
-    <h3>Disease & Pests</h3>
-      <%# <label for="sighted"> Sighted </label>%>
-      <input type="checkbox" name="diseasesPests" id="diseasesPests" values='American Foulbrood'>American Foulbrood
-
-      <%# <label for="diseasesPests"> Sighted </label>%>
-      <input type="checkbox" name="diseasesPests" id="diseasesPests" values='Nosema'>Nosema
-
-      <%# <label for="diseasesPests"> Sighted </label>%>
-      <input type="checkbox" name="diseasesPests" id="diseasesPests" values='Small Hive Beetle'>Small Hive Beetle
-
-      <%# <label for="diseasesPests"> Sighted </label>%>
-      <input type="checkbox" name="diseasesPests" id="diseasesPests" values='Varroa Mite'>Varroa Mite
-</div>
-
-<div>
-    <h3>Tasks for Next Inspection</h3>
-      <%# <label for="sighted"> Sighted </label>%>
-      <input type="checkbox" name="typeOfInspection" id="typeOfInspection" values='Inspect for Ailments'>Inspect for Ailments
-
-      <%# <label for="typeOfInspection"> Sighted </label>%>
-      <input type="checkbox" name="typeOfInspection" id="typeOfInspection" values='Laying Pattern'>Laying Pattern
-
-      <%# <label for="typeOfInspection"> Sighted </label>%>
-      <input type="checkbox" name="typeOfInspection" id="typeOfInspection" values='Regular Inspection'>Regular Inspection
-</div>
-
-      <label for="notes">Notes</label>
-      <textarea name="notes" rows="3" cols="80"></textarea>
-
-      <button type="submit">Submit Inspection</button>
-    </form>
+      <div>
+        <ul>
+          <% inspections.forEach((oneInspection) => { %>
+            <li>
+              <h2> <%= oneInspection.name %> </h2>
+              <p> <%= oneInspection.dateCreated %> </p>
+            </li>
+            <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
+            <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
+                    <button type="submit"> Delete </button>
+            <% }) %>
+        </ul>
+      </div>
 
   </body>
 </html>
