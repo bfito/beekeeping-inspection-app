@@ -9,22 +9,23 @@
 <h1> Hive Inspections </h1>
 <a href="/hives/<%= oneHive %>/new-inspection"> New Inspection </a> <br/><br/>
 
-<ul>
-  <% inspections.forEach((oneInspection) => { %>
-    <li>
-      <h2> <%= oneInspection.name %> </h2>
-      <p> <%= oneInspection.note %> </p>
-      <p> <%= oneInspection.toDo %> </p>
-    </li>
-    <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
-    <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
-            <button type="submit"> Delete </button>
-    <% }) %>
-</ul>
+<div class="hive-container">
+  <ul style="list-style: none;">
+    <% inspections.forEach((oneInspection) => { %>
+      <li>
+        <h2> <%= oneInspection.name %> </h2>
+        <p> <%= oneInspection.note %> </p>
+        <p> <%= oneInspection.toDo %> </p>
+      </li>
+      <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
+      <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
+              <button type="submit" class="delete-btn btn btn-default"> Delete </button>
+      <% }) %>
+  </ul>
+</div>
 
 
-
-<ul>
+<ul style="list-style: none;">
   <% if (userInfo) { %>
 
     <li> <a href="/hives/index"> My Hives </a> </li>

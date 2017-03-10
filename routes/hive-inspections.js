@@ -42,7 +42,6 @@ inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next)
 
       hive: req.params.hiveId
     });
-  });
 
     newInspection.save ((err) => {
       if (err) {
@@ -53,6 +52,7 @@ inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next)
         res.redirect('/hives/:hiveId/inspections/new');
       }
     });
+});
 });
 
 inspectionsRoutes.post('/hives/:hiveId/inspections', (req, res, next) => {
