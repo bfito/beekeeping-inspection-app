@@ -32,6 +32,7 @@ inspectionsRoutes.get('/hives/:hiveId/new-inspection', ensure.ensureLoggedIn(), 
 
 inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next) => {
   //    const filename = req.file.filename;
+  Inspection.find({ hive: req.params.hiveId }, (err, inspectionList) => {
 
     const newInspection = new Inspection ({
       dateInspected:  req.body.dateInspected,
@@ -39,8 +40,9 @@ inspectionsRoutes.post('/inspections', ensure.ensureLoggedIn(), (req, res, next)
       toDo:  req.body.toDo,
       image:  req.body.toDo,
 
-      hive: req.hive._id
+      hive: req.params.hiveId
     });
+  });
 
     newInspection.save ((err) => {
       if (err) {
@@ -57,14 +59,15 @@ inspectionsRoutes.post('/hives/:hiveId/inspections', (req, res, next) => {
   const inspectionId = req.params.id;
   const inspectionUpdates = {
     dateInspected: req.body.dateInspected,
-    sighted:       req.body.sighted,
-    population:    req.body.population,
-    layingPattern: req.body.layingPattern,
-    odor:          req.body.odor,
-    diseasesPests: req.body.diseasesPests,
-    feedingStores: req.body.feedingStores,
-    toDo:          req.body.toDo, //Not sure if i need to add appended options in here or if it pulls them automatically
     notes:         req.body.notes,
+    toDo:          req.body.toDo, //Not sure if i need to add appended options in here or if it pulls them automatically
+    image:          req.body.image,
+    // sighted:       req.body.sighted,
+    // population:    req.body.population,
+    // layingPattern: req.body.layingPattern,
+    // odor:          req.body.odor,
+    // diseasesPests: req.body.diseasesPests,
+    // feedingStores: req.body.feedingStores,
 
 };
 // db.hives.updateOne({ _id: hive }, { $set: hiveUpdates })

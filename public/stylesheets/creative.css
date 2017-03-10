@@ -428,6 +428,7 @@ body {
 .hive-container{
   border: 1px solid;
   width: auto;
+  height: auto;
   background-color: #4c4c4c;
   color: papayawhip;
   border-radius: 10px;
