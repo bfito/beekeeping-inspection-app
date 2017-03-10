@@ -9,31 +9,31 @@
 
 <a href="/hives/<%= oneHive %>/new-inspection"> New Inspection </a> <br/><br/>
 
-<div class="hive-container">
-  <ul style="list-style: none;">
     <% inspections.forEach((oneInspection) => { %>
+      <div class="hive-container">
+      <ul style="list-style: none;">
       <li>
         <h2> <u><%= oneHive.name %> HIVE NAME </u> </h2>
         <li> <a href="/inspections/<%= oneInspection._id %>/edit-inspections-view"> Edit Hive Inspection </a> </li>
           <hr class="light">
 
-        <h3>  NOTES </h3> </p>
+        <h3>  NOTES </h3>
         <ul>
           <li>
             <%= oneInspection.note %>
           </li>
         </ul>
 
-        <h3>  TO DO </h3> </p>
+        <h3>  TO DO </h3>
         <ol>
           <li>
            <%= oneInspection.toDo %>
            </li>
         </ol>
+        <button type="submit" class="delete-btn btn btn-default"> Delete </button>
+        <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
+        <hr>
       </li>
-      <button type="submit" class="delete-btn btn btn-default"> Delete </button>
-      <form action="/inspections/<%= oneInspection._id %>/delete" method="post">
-      <hr>
-  </ul>
-</div>
-<% }) %>
+      </ul>
+      </div>
+      <% }) %>
