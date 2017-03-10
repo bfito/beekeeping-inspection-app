@@ -1,55 +1,57 @@
-<div class="welcome">
+<div class="body-freaking-out">
+  <div class="welcome">
 
-  <% if (userInfo) { %>
-    <h3> Hello, <strong> <%= userInfo.firstName %>. </strong>  </h3>
-  <% } %>
-  <h2>WELCOME TO <%= title %></h2>
-</div>
-
-<div class="hive-title">
-  <ul style="list-style: none;">
-    <li> <h1> Your Hives </h1> </li>
-    <li> <a href="/hives/new" class="green-btn btn btn-default">Create a new Hive </a> </li>
-  </ul>
-</div>
-
-<div>
-  <ul>
     <% if (userInfo) { %>
+      <h3> Hello, <strong> <%= userInfo.firstName %>. </strong>  </h3>
+    <% } %>
+    <h2>WELCOME TO <%= title %></h2>
+  </div>
+
+  <div class="hive-title">
+    <ul style="list-style: none;">
+      <li> <h1> Your Hives </h1> </li>
+      <li> <a href="/hives/new" class="green-btn btn btn-default">Create a new Hive </a> </li>
+    </ul>
+  </div>
+
+  <div>
+    <ul>
+      <% if (userInfo) { %>
 
 
-      <% } else { %>
-        <li> <a href="/signup">Sign Up</a> </li>
-        <li> <a href="/login">Log In My Friend</a> </li>
-        <% } %>
-  </ul>
-</div>
+        <% } else { %>
+          <li> <a href="/signup">Sign Up</a> </li>
+          <li> <a href="/login">Log In My Friend</a> </li>
+          <% } %>
+    </ul>
+  </div>
 
-<div class="container">
-  <div class="row">
-    <% hives.forEach((oneHive) => { %>
-      <div class="hive-container col">
-        <ul style="list-style: none;">
-          <li>
-            <h2> <%= oneHive.name %> </h2>
-            <p>  <%= oneHive.dateCreated %> </p>
-            <p> <%=  oneHive.comment %>     </p>
-          </li>
-        </ul>
-        <ul>
-              <li  class="option-buttons"> <a href="/hives/<%= oneHive._id %>/inspections" class="link-btn btn btn-default"> Inspections</a> </li>
-
-              <li  class="option-buttons"> <a href="/hives/<%= oneHive._id %>/edit" class="link-btn btn btn-default"> Edit Hive </a> </li>
-
-              <li  class="option-buttons">
-                <form class="option-buttons" action="/hives/<%= oneHive._id %>/delete" method="post">
-                <button class="delete-hive-btn btn btn-default option-buttons" type="submit"> Delete </button>
-                </form>
-              </li>
-
+  <div class="container">
+    <div class="row">
+      <% hives.forEach((oneHive) => { %>
+        <div class="hive-container col">
+          <ul style="list-style: none;">
+            <li>
+              <h2> <%= oneHive.name %> </h2>
+              <p>  <%= oneHive.dateCreated %> </p>
+              <p> <%=  oneHive.comment %>     </p>
+            </li>
           </ul>
-          <hr>
-      </div>
-    <% }) %>
+          <ul>
+                <li  class="option-buttons"> <a href="/hives/<%= oneHive._id %>/inspections" class="link-btn btn btn-default"> Inspections</a> </li>
+
+                <li  class="option-buttons"> <a href="/hives/<%= oneHive._id %>/edit" class="link-btn btn btn-default"> Edit Hive </a> </li>
+
+                <li  class="option-buttons">
+                  <form class="option-buttons" action="/hives/<%= oneHive._id %>/delete" method="post">
+                  <button class="delete-hive-btn btn btn-default option-buttons" type="submit"> Delete </button>
+                  </form>
+                </li>
+
+            </ul>
+            <hr>
+        </div>
+      <% }) %>
+    </div>
   </div>
 </div>
